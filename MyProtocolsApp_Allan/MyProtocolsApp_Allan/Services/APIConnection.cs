@@ -11,7 +11,7 @@ namespace MyProtocolsApp_Allan.Services
         //Por comodidad la ruta URL completa para consumir los recursos del API se hará 
         //en formato "prefijo"+"sufijo"
         //donde el prefijo sera la parte del URL que nunca cambiará y el sufijo será la parte variable
-        //(nombre del controlador y sus parámetros) 
+        //(nombre del controlador y sus parámetros)
 
         public static string ProductionPrefixURL = "http://192.168.0.169:45457/api/";
         public static string TestingPrefixURL = "http://192.168.0.169:45457/api/";
