@@ -13,8 +13,8 @@ namespace MyProtocolsApp_Allan.Services
         //donde el prefijo sera la parte del URL que nunca cambiará y el sufijo será la parte variable
         //(nombre del controlador y sus parámetros)
 
-        public static string ProductionPrefixURL = "http://192.168.0.169:45457/api/";
-        public static string TestingPrefixURL = "http://192.168.0.169:45457/api/";
+        public static string ProductionPrefixURL = "http://192.168.0.169:45455/api/";
+        public static string TestingPrefixURL = "http://192.168.0.169:45455/api/";
 
         public static string ApiKeyName = "Progra6ApiKey";
         public static string ApiKeyValue = "AllanProgra6AsdZxc12345";
