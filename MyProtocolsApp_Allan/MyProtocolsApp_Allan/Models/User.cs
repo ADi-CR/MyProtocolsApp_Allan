@@ -29,11 +29,12 @@ namespace MyProtocolsApp_Allan.Models
         public bool? IsBlocked { get; set; }
         public int UserRoleId { get; set; }
 
-        public virtual UserRole? UserRole { get; set; }
+        //public virtual UserRole? UserRole { get; set; } = null!;
 
         public User()
         {
-                
+            Active = true;   
+            IsBlocked = false;
         }
 
         //Funciones especificas de llamada a end points del API 
@@ -83,6 +84,55 @@ namespace MyProtocolsApp_Allan.Models
             }
         
         }
+
+        public async Task<bool> AddUserAsync()
+        {
+            try
+            {
+                string RouteSufix = string.Format("Users");
+                //armamos la ruta completa al endpoint en el API 
+                string URL = Services.APIConnection.ProductionPrefixURL + RouteSufix;
+
+                RestClient client = new RestClient(URL);
+
+                Request = new RestRequest(URL, Method.Post);
+
+                //agregamos mecanismo de seguridad, en este caso API key
+                Request.AddHeader(Services.APIConnection.ApiKeyName, Services.APIConnection.ApiKeyValue);
+
+                //en el caso de una operación POST debemos serializar el objeto para pasarlo como 
+                //json al API 
+                string SerializedModelObject = JsonConvert.SerializeObject(this);
+                //agregamos el objeto serializado el el cuuerpo del request. 
+                Request.AddBody(SerializedModelObject, GlobalObjects.MimeType);
+
+                //ejecutar la llamada al API 
+                RestResponse response = await client.ExecuteAsync(Request);
+
+                //saber si las cosas salieron bien 
+                HttpStatusCode statusCode = response.StatusCode;
+
+                if (statusCode == HttpStatusCode.Created)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                throw;
+            }
+
+        }
+
+
+
+
 
 
 

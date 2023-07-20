@@ -101,11 +101,6 @@ namespace MyProtocolsApp_Allan.Views
                 return;
             }
 
-
-
-
-
-
         }
 
         private async void BtnSignUp_Clicked(object sender, EventArgs e)
