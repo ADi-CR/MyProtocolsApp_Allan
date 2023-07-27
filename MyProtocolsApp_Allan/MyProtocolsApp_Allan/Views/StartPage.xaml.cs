@@ -15,6 +15,14 @@ namespace MyProtocolsApp_Allan.Views
 		public StartPage ()
 		{
 			InitializeComponent ();
+
+			LoadUserName();
 		}
+
+		private void LoadUserName()
+		{
+			LblUserName.Text = GlobalObjects.MyLocalUser.Nombre.ToUpper();
+		}
+
 	}
 }

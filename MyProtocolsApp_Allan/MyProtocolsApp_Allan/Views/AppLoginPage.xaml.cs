@@ -65,7 +65,7 @@ namespace MyProtocolsApp_Allan.Views
                         //si la validación es correcta se permite el ingreso al sistema 
                         //igual que el progra 5 vamos a tener un usuario global 
 
-                        //TODO: crear el objeto de usuario global 
+                        GlobalObjects.MyLocalUser = await viewModel.GetUserDataAsync(TxtUserName.Text.Trim());
 
                         await Navigation.PushAsync(new StartPage());
                         return;
