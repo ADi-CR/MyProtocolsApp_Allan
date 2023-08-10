@@ -59,7 +59,29 @@ namespace MyProtocolsApp_Allan.ViewModels
 
 
         }
-        
+
+
+        public async Task<bool> UpdateUser(UserDTO pUser)
+        {
+            if (IsBusy) return false;
+            IsBusy = true;
+
+            try
+            {
+                MyUserDTO = pUser;
+
+                bool R = await MyUserDTO.UpdateUserAsync();
+
+                return R;
+
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            finally { IsBusy = false; }
+        }
 
 
         //función para validar el ingreso del usuario al app por medio del 
@@ -80,7 +102,7 @@ namespace MyProtocolsApp_Allan.ViewModels
             try
             {
                 MyUser.Email = pEmail;
-                MyUser.LoginPassword = pPassword;
+                MyUser.Password = pPassword;
 
                 bool R = await MyUser.ValidateUserLogin();
 
@@ -142,7 +164,7 @@ namespace MyProtocolsApp_Allan.ViewModels
                // MyUser = new User();
 
                 MyUser.Email = pEmail;
-                MyUser.LoginPassword = pPassword;
+                MyUser.Password = pPassword;
                 MyUser.Name = pName;
                 MyUser.BackUpEmail = pBackUpEmail;
                 MyUser.PhoneNumber = pPhoneNumber;

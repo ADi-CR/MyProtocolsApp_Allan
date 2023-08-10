@@ -54,8 +54,11 @@ namespace MyProtocolsApp_Allan.Views
                 await DisplayAlert(":(", "Something went wrong...", "OK");
             }
 
+        }
 
-
+        private async void BtnCancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

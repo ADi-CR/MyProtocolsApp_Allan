@@ -24,5 +24,9 @@ namespace MyProtocolsApp_Allan.Views
 			LblUserName.Text = GlobalObjects.MyLocalUser.Nombre.ToUpper();
 		}
 
-	}
+        private async void BtnUserManagment_Clicked(object sender, EventArgs e)
+        {
+			await Navigation.PushAsync(new UserManagmentPage());
+        }
+    }
 }

@@ -13,7 +13,7 @@ namespace MyProtocolsApp_Allan
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             //definimos la forma de apilar páginas en la pantalla 
             //y cuál es la primera página que mostraremos
 

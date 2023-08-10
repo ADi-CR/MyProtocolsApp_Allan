@@ -26,20 +26,18 @@ namespace MyProtocolsApp_Allan.Models
         }
 
         public int UserId { get; set; }
-        public string Email { get; set; }
-        public string LoginPassword { get; set; }
-        public string Name { get; set; }
-        public string BackUpEmail { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
+        public string Email { get; set; } = null!;
+        public string Password { get; set; } = null!;
+        public string Name { get; set; } = null!;
+        public string BackUpEmail { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
+        public string? Address { get; set; }
         public bool? Active { get; set; }
         public bool? IsBlocked { get; set; }
         public int UserRoleId { get; set; }
 
-        //public virtual UserRole? UserRole { get; set; } = null!;
-
-
-
+        public virtual UserRole UserRole { get; set; } = null!;
+      
         //Funciones especificas de llamada a end points del API 
 
         //función que permite validar que los datos digitados en la pagina de 
@@ -53,7 +51,7 @@ namespace MyProtocolsApp_Allan.Models
                 //completa de consumo del end point que se quiere usar. 
 
                 string RouteSufix = string.Format("Users/ValidateLogin?username={0}&password={1}",
-                                                                       this.Email, this.LoginPassword);
+                                                                       this.Email, this.Password);
                 //armamos la ruta completa al endpoint en el API 
                 string URL = Services.APIConnection.ProductionPrefixURL + RouteSufix;
 
