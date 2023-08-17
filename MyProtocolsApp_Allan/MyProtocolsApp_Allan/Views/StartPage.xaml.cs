@@ -28,5 +28,10 @@ namespace MyProtocolsApp_Allan.Views
         {
 			await Navigation.PushAsync(new UserManagmentPage());
         }
+
+        private async void BtnProtocolManagment_Clicked(object sender, EventArgs e)
+        {
+			await Navigation.PushAsync(new ProtocolsListPage());
+        }
     }
 }
